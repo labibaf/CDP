@@ -6,8 +6,7 @@ const float CALIBRATION_FACTOR = 0.42;
 
 HX711 scale;
 
-int btn=23;
-int btnstate=0;
+
 
 // kalman
 float SensorData,KalmanFilterData;
@@ -21,15 +20,9 @@ void setup() {
   scale.set_scale(CALIBRATION_FACTOR);
   scale.tare();
   R=100;Q=1;Pt_prev + Q;
-
-  pinMode(btn,INPUT);
 }
 
 void loop() {
-  btnstate=digitalRead(btn);
-  if(btnstate=HIGH){
-    scale.tare();
-  }
   float weight = scale.get_units();
   Serial.print(weight);
 
